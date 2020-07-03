@@ -30,7 +30,7 @@ public class User {
     public void setUpdatedStamp(LocalDateTime updatedStamp) {
         this.updatedStamp = updatedStamp;
     }
-    
+
     public Integer getId() {
         return id;
     }
