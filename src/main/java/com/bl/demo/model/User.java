@@ -1,20 +1,36 @@
 package com.bl.demo.model;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDateTime;
 
 @Entity
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String firstName;
     private String lastName;
+    private LocalDateTime createdStamp;
+    private LocalDateTime updatedStamp;
 
-    public User(Integer id, String firstName, String lastName) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public LocalDateTime getCreatedStamp() {
+        return createdStamp;
     }
 
-    @Id
+    public void setCreatedStamp(LocalDateTime createdStamp) {
+        this.createdStamp = createdStamp;
+    }
+
+    public LocalDateTime getUpdatedStamp() {
+        return updatedStamp;
+    }
+
+    public void setUpdatedStamp(LocalDateTime updatedStamp) {
+        this.updatedStamp = updatedStamp;
+    }
+    
     public Integer getId() {
         return id;
     }
