@@ -3,7 +3,6 @@ import com.bl.demo.model.User;
 import com.bl.demo.service.IGreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -18,9 +17,14 @@ public class GreetingController {
         return greetingService.addUser(user);
     }
 
-    @GetMapping("/user")
+    @GetMapping("/userinformation")
     public List<User> getAllUser() {
         return greetingService.getAllUser();
+    }
+
+    @PutMapping ("/userinformation")
+    public User addUser(@RequestParam (value = "id") int id, @RequestBody User user) {
+        return greetingAppService.updateUser(id, user);
     }
 
 }

@@ -4,6 +4,7 @@ import com.bl.demo.repository.IGreetingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -20,5 +21,14 @@ public class GreetingServiceImpl implements IGreetingService{
     @Override
     public List<User> getAllUser() {
         return greetingRepository.findAll();
+    }
+
+    @Override
+    public User updateUser(int id, User user) {
+        User updateData=greetingRepository.findById(id).get();
+        updateData.setFirstName(user.getFirstName());
+        updateData.setLastName(user.getLastName());
+        updateData.setUpdatedStamp(LocalDateTime.now());
+        return greetingRepository.save(updateData);
     }
 }
