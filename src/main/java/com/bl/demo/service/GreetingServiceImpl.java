@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static org.hibernate.type.DoubleType.ZERO;
+
 @Service
 public class GreetingServiceImpl implements IGreetingService{
 
@@ -30,5 +32,16 @@ public class GreetingServiceImpl implements IGreetingService{
         updateData.setLastName(user.getLastName());
         updateData.setUpdatedStamp(LocalDateTime.now());
         return greetingRepository.save(updateData);
+    }
+    
+    @Override
+    public String deleteUser(int id) {
+        if (id != ZERO) {
+            greetingRepository.deleteById(id);
+            return "Deleted Successfully";
+        }
+        else{
+            return null;
+        }
     }
 }

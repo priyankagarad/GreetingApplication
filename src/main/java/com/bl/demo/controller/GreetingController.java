@@ -24,7 +24,12 @@ public class GreetingController {
 
     @PutMapping ("/userinformation")
     public User addUser(@RequestParam (value = "id") int id, @RequestBody User user) {
-        return greetingAppService.updateUser(id, user);
+        return greetingService.updateUser(id, user);
     }
+    @DeleteMapping ("/user")
+    public String deleteUser(@RequestParam (value = "id") int id) {
+        return greetingService.deleteUser(id);
+    }
+}
 
 }
